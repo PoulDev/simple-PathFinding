@@ -3,7 +3,7 @@ import algorythms
 
 import random
 
-VIEW_ANIMATIONS = False
+VIEW_ANIMATIONS = True
 
 def getValue(from_, to_, avoid = []):
     value = avoid[0] if len(avoid) > 0 else random.randint(from_, to_)
@@ -18,14 +18,19 @@ mapY = 20
 map.generateMap(mapX, mapY)
 
 # Spawn the objects
-startX = getValue(0, mapX)
-startY = getValue(0, mapY)
+startX = getValue(0, mapX-1)
+startY = getValue(0, mapY-1)
 map.spawn(Objects.start, (startX, startY))
-map.spawn(Objects.end, (getValue(0, mapX, [startX]), getValue(0, mapY, [startY])))
+
+for y in range(100):
+    map.spawn(Objects.wall, (getValue(0, mapX-1, [startX]), getValue(0, mapY-1, [startY])))
+
+map.spawn(Objects.end, (getValue(0, mapX-1, [startX]), getValue(0, mapY-1, [startY])))
+
 
 
 # Find the nearest end
-nearestEnd = algorythms.findEnd(startX, startY, map, VIEW_ANIMATIONS)
+nearestEnd = algorythms.findEnd(startX, startY, map, False)
 print(f'nearestEnd = {prettifier.position(nearestEnd)}')
 
 map.clearAnimations()

@@ -20,7 +20,8 @@ class Map:
         print('╘' + '═' * (self.width+1) + '╛')
 
     def spawn(self, object, position):
-        self.map[position[1]][position[0]] = object
+        if self.getPosition(position) not in [Objects.start, Objects.end, Objects.wall]:
+            self.map[position[1]][position[0]] = object
 
     def clearAnimations(self):
         for rowIndex, row in enumerate(self.map):
@@ -28,3 +29,9 @@ class Map:
                 if cell == Objects.path:
                     self.map[rowIndex][cellIndex] = Objects.NULL
 
+    def getPosition(self, position):
+        if position[1] < 0 or position[1] > self.height:
+            return -1
+        if position[0] < 0 or position[0] > self.width:
+            return -1
+        return self.map[position[1]][position[0]]

@@ -13,12 +13,12 @@ objects = {
 }
 
 class Lines:
-    TOPLEFT = color + '╒'
-    TOPRIGHT = color + '╕'
-    BOTTOMLEFT = color + '╘'
-    BOTTOMRIGHT = color + '╛'
-    MIDDLE = color + '│'
-    TOP = color + '═'
+    BOTTOM_2_TOPRIGHT = color + '╒' + reset
+    TOP_2_BOTTOMLEFT  = color + '╘' + reset
+    BOTTOM_2_TOPLEFT  = color + '╕' + reset
+    BOTTOMLEFT_2_TOP  = color + '╛' + reset
+    MIDDLE = color + '│' + reset
+    LINE = color + '═' + reset
 
 
 def position(pos):
