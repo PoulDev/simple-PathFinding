@@ -30,7 +30,7 @@ map.spawn(Objects.end, (getValue(0, mapX-1, [startX]), getValue(0, mapY-1, [star
 
 
 # Find the nearest end
-nearestEnd = algorythms.findEnd(startX, startY, map, False)
+nearestEnd = algorythms.findEnd(startX, startY, map, VIEW_ANIMATIONS)
 print(f'nearestEnd = {prettifier.position(nearestEnd)}')
 
 map.clearAnimations()
